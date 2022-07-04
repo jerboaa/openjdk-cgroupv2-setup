@@ -1,7 +1,7 @@
 # OpenJDK cgroup v2 setup
 This repository contains a rudimentary ansible playbook for a basic cgroup v2 setup which then works for OpenJDK jtreg container tests.
 
-Note: This has only been tested on Fedora Workstation (32) so far.
+Note: This has only been tested on Fedora Workstation (33-36) so far.
 
 # Usage
 
