@@ -48,3 +48,11 @@
       systemd:
         name: cpuset-enable
         enabled: yes
+    # Docker is a systemd service and it inherits the default systemd config
+    # for DefaultTasksMax. Therefore, all docker spawned containers will run
+    # with that limit. The OpenJDK tests assume > 30000 for the unlimited
+    # TestPids.java test-case. The equivalent podman config file is
+    # /etc/containers/containers.conf copied from /usr/share/containers/containers.conf
+    # but it isn't a problem there.
+    - name: Update PIDs max upper bound for Docker
+      ini_file: dest=/etc/systemd/system.conf section=Manager option=DefaultTasksMax value=31000 backup=yes
